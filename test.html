@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+count = 0;
+startTime = 0;
+flag = false;
+function initTime() {
+	var temp = new Date();
+	startTime = temp.getTime();
+}
+function doCount() {
+	if (!flag) initTime();
+	flag = true;
+	if ((++count)%50 == 0) {
+		doWhenFifty();
+	}
+	document.getElementById("count").innerHTML = "The current count is " + count;
+}
+function doWhenFifty() {
+	document.getElementById("message").innerHTML = "You have completed 50 hits, your APM is ";
+	var temp = new Date();
+	document.getElementById("message").innerHTML += (50/(temp.getTime() - startTime)*60000);
+	initTime();
+}
+</script>
+<title>你渴望手速吗年轻人！</title>
+</head>
+<body onload="initTime()">
+  <h1>你渴望手速吗年轻人！</h1>
+  <div style="color: rgb(100,100,100); background-color: rgb(255,255,0);" onclick="doCount()">
+  <br><br><br><br><br>
+  <h1>CLICK HERE!!</h1>
+  <h1 id="count"></h1>
+  <h1 id="message"></h1>
+  <br><br><br><br><br>
+  </div>
+</body>
+</html>
