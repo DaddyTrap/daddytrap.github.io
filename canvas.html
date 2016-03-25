@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+isMouseDown = false;
+function onMouseDown(event) {
+	isMouseDown = true;
+}
+function onMouseUp(event) {
+	isMouseDown = false;
+}
+function onMouseMove(event) {
+	getPos(event);
+	if (isMouseDown) {
+		var cxt = document.getElementById("drawboard").getContext("2d");
+		cxt.fillStyle = "#FF0000";
+		cxt.beginPath();
+		cxt.arc(event.clientX, event.clientY, 5, 0, Math.PI*2, true);
+		cxt.closePath();
+		cxt.fill();
+	}
+}
+function getPos(e) {
+	x = e.clientX;
+	y = e.clientY;
+	document.getElementById("console").innerHTML = x + ", " + y;
+}
+function clearPos() {
+	document.getElementById("console").innerHTML = "";
+}
+</script>
+</head>
+<body>
+  <canvas id="drawboard" onmousemove="onMouseMove(event)" onmouseout="clearPos()" 
+  onmousedown="onMouseDown(event)" onmouseup="onMouseUp(event)" width = "1000" height="1000">
+    <br><br><br>
+  </canvas>
+  <div id="console"></div>
+</body>
+</html>
