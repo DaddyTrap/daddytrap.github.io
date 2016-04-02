@@ -33,11 +33,11 @@
             <p><h4>作为Notepad++的替代品。</h4></p>
             <p>在刚上大学的时候，鄙人用的是Notepad++来编写代码</p>
             <p>其实确实是一个很好用的文本编辑器，然而不尽人意的地方就在于——它的主题配色</p>
-            <img src="assets/notepad++_origin.png" alt="Notepad++_orgin" style="padding-left: 65px;"/>
+            <img src="assets/notepad++_origin.png" alt="Notepad++_orgin" style="padding-left: 65px; width: 70%; height: 70%;"/>
             <p><h4>↑↑↑↑↑↑↑↑这个是Notepad++较为接近默认配置的主题↑↑↑↑↑↑↑↑</h4></p>
             <p>其实作为一个可以个性化的文本编辑器(总之不要用Windows的Notepad就好了……)……它确实是可以调主题的</p>
             <p>即便如此，效果还是不佳</p>
-            <img src="assets/notepad++_mine.png" alt="Notepad++_mine" style="padding-left: 65px;"/>
+            <img src="assets/notepad++_mine.png" alt="Notepad++_mine" style="padding-left: 65px; width: 70%; height: 70%;"/>
             <p><h4>↑↑↑↑↑↑↑↑这个是Notepad++我自己设置的主题↑↑↑↑↑↑↑↑</h4></p>
             <p>可以看出，主题配色变了，然而窗口的边框还是生硬的白色……</p>
             <p>或许是鄙人寡闻，不知道有改边框的方法，但是第一次见到sublime就被酷炫的主题色吸引到了(虽说也有人吐槽sublime的原配色难看……)</p>
@@ -57,7 +57,7 @@
             <br>
             <p>噢……我想Dev-cpp就不需要截图了……(我已经不太想打开它了……)</p>
             <p>舍弃Notepad++的重要原因其实就在于，sublime可以在编辑器里面编译</p>
-            <img src="assets/sublime_build.png" alt="sublime_build" style="padding-left: 65px;"/>
+            <img src="assets/sublime_build.png" alt="sublime_build" style="padding-left: 65px; width: 70%; height: 70%;"/>
             <p>Ctrl+Shift+B即可编译运行，这可是很方便哦(然而还是有点局限性……)</p>
             <p style="color: #999999">(对了上面的sort代码是错的)</p>
             <p>扯前面这么多纯属安利了……下面就进入正题吧</p>
@@ -80,11 +80,11 @@
                 <p>根据Dev版本不同，它可能会是其他名字</p>
                 <p>MinGW，里面包含了编译器、调试器、标准库等等。可以看到Dev-cpp里面也是有这个这个工具的</p>
                 <p>然而我个人还是想脱离Dev-cpp……推荐大伙下载MinGW Installer</p>
-                <img src="assets/MinGW_Installer.png" alt="Dev文件夹截图" style="padding-left: 65px;"/>
+                <img src="assets/MinGW_Installer.png" alt="Dev文件夹截图" style="padding-left: 65px; "/>
                 <p>不需要的可以<a href="#b_part">跳过</a></p>
                 <p>你可以用它来把你的一套MinGW工具装好</p>
                 <p>这样，把需要的都Mark上(Basic Setup很重要)</p>
-                <img src="assets/MinGW_install.png" alt="MinGW Installer截图" style="padding-left: 65px;"/>
+                <img src="assets/MinGW_install.png" alt="MinGW Installer截图" style="padding-left: 65px; width: 70%; height: 70%;"/>
                 <p>然后这样，点左上角的Installation，Apply</p>
                 <img src="assets/MinGW_install_1.png" alt="MinGW Installer截图" style="padding-left: 65px;"/>
                 <p>然后等待下载</p>
@@ -107,7 +107,7 @@
                 <p>如果你有快压的话，可以右键使用快压打开；如果没有……呃，我也不知道有哪个工具也支持(如果你打算安装快压，请谨防2345全家桶)</p>
                 <p>按下图的步骤打开里面的build文件，这里就是你按下Ctrl+Shift+B时执行的指令了</p>
                 <img src="assets/sublime_build.jpg" style="padding-left: 65px;"/>
-                <img src="assets/sublime_build_cmd.png" style="padding-left: 65px;"/>
+                <img src="assets/sublime_build_cmd.png" style="padding-left: 65px; width: 70%; height: 70%;"/>
                 <p>学习关于Windows的cmd的知识可以帮助你理解这些指令……或许也不需要……在接触如何用Ubuntu编译的时候你就会g++ filename -o outfilename这样的指令了……</p>
                 <p>而下面出现了奇怪的东西……"MyCallRun"和"MyCallGdb"</p>
                 <p>这是两个自己写的bat文件，作用在于，让程序运行的结果出现在命令窗口中，而不是出现在sublime的Console中</p>
@@ -133,13 +133,17 @@
                 <p>这时%1所代表的值其实还是文件名，因为它是调用它的bat代入的第一个参数</p>
                 <p>那么%1自成一行就是直接运行，gdb %1就是用gdb运行它</p>
                 <p>所以一个实现了直接运行的效果，一个实现了gdb调试运行的效果</p>
+              </div>
+              <h4><a name="d_part">d.配置完成</a></h4>
+              <div style="text-indent: 6em">
+                
                 <p>到这里，我们已经配置好了</p>
                 <p>编写一个cpp文件，保存(必须)，按下Ctrl+Shift+B，你就可以看到最前面说到的这个窗口了</p>
                 <p>第一项是只编译，第二项是编译运行，第三项是编译并调试</p>
                 <p>成功了么？成功了的话就恭喜恭喜了！</p>
               </div>
+              
             </div>
-
             <h3>3.安装插件</h3>
             <p style="color: #999999">正在施工中...</p>
             <div style="margin: 0 auto; width: 80%; text-indent: 0em; border-style: ridge; border-width: 10px; border-radius: 10px; border-color: #55ffff;">import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)</div>
