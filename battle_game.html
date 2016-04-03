@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>GameTest</title>
+    <script type="text/javascript" src="files/jquery-2.2.2.min.js"></script>
+    <script src="files/game.js"></script>
+  </head>
+  <body>
+    <div><input type="text" id="txt" style="width: 200px"></div>
+    <div id="press"><br>
+      <input type="button" onclick="Game.test()" value="Test">
+      <input type="button" onclick="Game.addSprite()" value="Add">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+    <br></div>
+    <canvas id="m_canvas" width="800" height="600"></canvas>
+
+
+
+    <script type="text/javascript">
+      var test = new Sprite();
+      test.img.src = "assets/game_assets/head.png";
+      test.cxt = document.getElementById('m_canvas').getContext('2d');
+      Game.init(document.getElementById('m_canvas').getContext('2d'));
+      Game.start();
+    </script>
+  </body>
+</html>
