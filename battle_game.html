@@ -7,7 +7,7 @@
     <script src="files/game.js"></script>
   </head>
   <body>
-    <div><input type="text" id="txt" style="width: 200px"></div>
+    <div><input type="text" id="txt" style="width: 300px"></div>
     <div id="press"><br>
       <input type="button" onclick="Game.test()" value="Test">
       <input type="button" onclick="Game.addSprite()" value="Add">
@@ -20,16 +20,13 @@
       <br>
       <br>
     <br></div>
-    <canvas id="m_canvas" width="800" height="600"></canvas>
-
-
-
+    <canvas id="m_canvas" width="800" height="600" style="border-color: #995522; border-style: groove; border-radius: 10px;border-width: 5px;"></canvas>
     <script type="text/javascript">
-      var test = new Sprite();
-      test.img.src = "assets/game_assets/head.png";
-      test.cxt = document.getElementById('m_canvas').getContext('2d');
-      Game.init(document.getElementById('m_canvas').getContext('2d'));
-      Game.start();
+    var test = new Sprite();
+    test.img.src = "assets/game_assets/head.png";
+    test.cxt = document.getElementById('m_canvas').getContext('2d');
+    Game.init(document.getElementById('m_canvas').getContext('2d'));
+    Game.start();
     </script>
   </body>
 </html>

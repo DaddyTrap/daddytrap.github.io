@@ -3,6 +3,7 @@ var KEY_UP = 38;
 var KEY_DOWN = 40;
 var KEY_LEFT = 37;
 var KEY_RIGHT = 39;
+var KEY_Z = 90;
 var c = 0;
 function GetRandomNum(Min, Max) {
   var Range = Max - Min;
@@ -15,7 +16,7 @@ function Sprite(c) {
   this.dirX = 0;
   this.dirY = 0;
   this.moving = false;
-  this.speed = 10;
+  this.speed = 5;
   this.img = new Image();
   this.cxt = c;
   this.draw = function() {
@@ -28,18 +29,21 @@ function Sprite(c) {
   };
   this.move = function() {
     if (!this.moving) return;
-    var tx = this.dirX * this.speed;
-    var ty = this.dirY * this.speed;
+    var tspeed = this.speed;
+    var tmp = this.dirX + this.dirY;
+    if (tmp == 0 || tmp == 2 || tmp == -2) tspeed *= Math.sqrt(2) * 0.5;
+    var tx = this.dirX * tspeed;
+    var ty = this.dirY * tspeed;
     this.x += tx;
     this.y += ty;
     var txt = document.getElementById('txt');
     txt.value = '(';
-    txt.value += this.x;
+    txt.value += Math.round(this.x);
     txt.value += ', ';
-    txt.value += this.y;
+    txt.value += Math.round(this.y);
     txt.value += ')';
-    txt.value += 'mx:' + tx + ', my:' + ty + '  dir:' +
-        '(' + this.dirX + ', ' + this.dirY + ')';
+    txt.value += 'mx:' + tx.toFixed(2) + ', my:' + ty.toFixed(2) + '  dir:' +
+        '(' + Math.round(this.dirX) + ', ' + Math.round(this.dirY) + ')';
   };
   this.setDir = function(dx, dy) {
     if (dx == 0 && dy == 0) return;
@@ -52,12 +56,13 @@ Game.init = function(c) {
   this.running = false;
   this.cxt = c;
   this.spriteID = 0;
-  this.fps = 10;
+  this.fps = 60;
   this.controlEntity = new Sprite(this.cxt);
   this.isUp = false;
   this.isDown = false;
   this.isLeft = false;
   this.isRight = false;
+  this.isZ = false;
   this.controlEntity.img.src = "assets/game_assets/head.png";
   window.addEventListener('keydown', this.doKeyDownEvent, false);
   window.addEventListener('keyup', this.doKeyUpEvent, false);
@@ -143,6 +148,10 @@ Game.doKeyDownEvent = function(e) {
   if (key == KEY_UP) {
     Game.isUp = true;
   }
+  if (key == KEY_Z) {
+    Game.isZ = true;
+  }
+
 };
 Game.doKeyUpEvent = function(e) {
   var key = e.keyCode;
@@ -159,4 +168,8 @@ Game.doKeyUpEvent = function(e) {
   if (key == KEY_UP) {
     Game.isUp = false;
   }
+  if (key == KEY_Z) {
+    Game.isZ = false;
+  }
+
 };
