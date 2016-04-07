@@ -7,9 +7,9 @@
     <script src="files/game.js"></script>
   </head>
   <body>
-    <div><input type="text" id="txt" style="width: 300px"></div>
+    <div><input type="text" id="txt" style="width: 500px"></div>
     <div id="press"><br>
-      <input type="button" onclick="Game.test()" value="Test">
+      <input type="button" onclick="Game.test(document.getElementById('txt'))" value="Test">
       <input type="button" onclick="Game.addSprite()" value="Add">
       <br>
       <br>
