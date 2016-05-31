@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Count</title>
+  </head>
+  <body>
+
+    <ul>
+      <li><input type="button" name="name" value="A" onclick="count('A')"></li>
+      <li><input type="button" name="name" value="B" onclick="count('B')"></li>
+      <li><input type="button" name="name" value="C" onclick="count('C')"></li>
+      <li><input type="button" name="name" value="D" onclick="count('D')"></li>
+    </ul>
+    A:<p id='A'>0</p>
+    B:<p id='B'>0</p>
+    C:<p id='C'>0</p>
+    D:<p id='D'>0</p>
+  </body>
+
+  <script type="text/javascript">
+    function count(choice) {
+      var ele = document.getElementById(choice);
+      var c = parseInt(ele.innerHTML);
+      ele.innerHTML = String(c + 1);
+    };
+  </script>
+</html>
