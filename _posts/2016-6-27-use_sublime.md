@@ -9,13 +9,13 @@ categories: tutorial
 本教程适用于新手，若有错误，烦请大神指正
 
 
-### 为什么用Sublime Text?
+## 为什么用Sublime Text?
 
->如果你已经很明确你要学习sublime,那么这段就可以[跳过][]了
+>如果你已经很明确你要学习sublime,那么这段就可以[跳过](#jump)了
 
 ---
 
-#### *1.编辑器方面*
+### *1.编辑器方面*
 作为Notepad++的替代品。
 
 在刚上大学的时候，鄙人用的是Notepad++来编写代码
@@ -40,7 +40,7 @@ categories: tutorial
 
 ---
 
-#### *2.编译器方面*
+### *2.编译器方面*
 
 作为Dev-cpp的替代品。
 
@@ -66,8 +66,22 @@ categories: tutorial
 
 Ctrl+Shift+B即可编译运行，这可是很方便哦
 
+>对了上面的sort代码是错的
+
 扯这么多纯属安利，下面进入正题。
 
 ---
+
+
+<anchor id='jump'/>
+## 这里开始吧
+
+### 1.下载
+
+[点这里](http://www.sublimetext.com/3)
+
+找到符合自己的系统下载就好了(本文就讲讲Windows)
+
+### 2.配置编译环境
 
 
