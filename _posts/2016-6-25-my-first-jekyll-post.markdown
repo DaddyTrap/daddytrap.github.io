@@ -2,7 +2,7 @@
 layout: post
 title:  "My First Jekyll Post!"
 date:   2016-06-25 8:23:06 +0800
-categories: beginning
+categories: Interest
 ---
 {% highlight cpp %}
 #include <iostream>
