@@ -1,0 +1,265 @@
+/* Supporting lines */
+/* div {
+  border: 1px solid red;
+} */
+
+body {
+  transition: all 0.5s;
+  font-family: sans-serif;
+}
+
+/* hint */
+
+#win-hint {
+  font-size: 74pt;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+  top: 20%;
+  transition: all 1s;
+  color: red;
+  box-shadow: 0 0 12px 0 red;
+}
+
+#win-hint.hidden {
+  opacity: 0;
+  top: -10%;
+}
+
+#original-img {
+  width: 200px;
+  height: 200px;
+  border: 3px solid #B7B7B7;
+  background-size: 200px 200px;
+  position: fixed;
+  left: 10%;
+  top: 10%;
+}
+
+.bg-panda #original-img {
+  background-image: url(../img/panda.jpg);
+}
+
+.bg-cirno #original-img {
+  background-image: url(../img/Cirno.jpg);
+}
+
+.bg-creeper #original-img {
+  background-image: url(../img/Creeper.jpg);
+}
+
+.bg-dragonborn #original-img {
+  background-image: url(../img/Dragonborn.jpg);
+}
+
+.bg-suika #original-img {
+  background-image: url(../img/Suika.jpg);
+}
+
+/* background */
+
+.bg-panda {
+  background-color: gray;
+}
+
+.bg-cirno {
+  background-color: #00ADD2;
+}
+
+.bg-creeper {
+  background-color: #317637;
+}
+
+.bg-dragonborn {
+  background-color: #393939;
+}
+
+.bg-suika {
+  background-color: #393939;
+}
+
+.bg-panda .game-container span {
+  background-image: url(../img/panda.jpg);
+}
+
+.bg-cirno .game-container span {
+  background-image: url(../img/Cirno.jpg);
+}
+
+.bg-creeper .game-container span {
+  background-image: url(../img/Creeper.jpg);
+}
+
+.bg-dragonborn .game-container span {
+  background-image: url(../img/Dragonborn.jpg);
+}
+
+.bg-suika .game-container span {
+  background-image: url(../img/Suika.jpg);
+}
+
+h1 {
+  text-align: center;
+}
+
+/* divs */
+
+.middle-positioner {
+  width: 420px;
+  height: 100%;
+  margin: auto;
+}
+
+.game-container {
+  width: 352px;
+  height: 352px;
+  border: 5px solid #B7B7B7;
+  margin: auto;
+  position: relative;
+}
+
+.puzzle-piece {
+  height: 88px;
+  width: 88px;
+  border: 1px solid #B7B7B7;
+  transition: all 0.5s;
+  display: inline-block;
+  position: absolute;
+  cursor: pointer;
+}
+
+.puzzle-piece:hover {
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.puzzle-piece.puzzle-complete {
+  border: 0;
+}
+
+/* Image position */
+.puzzle-imgpos-0-0 {
+  background-position: 0 0;
+}
+
+.puzzle-imgpos-0-1 {
+  background-position: -88px 0;
+}
+
+.puzzle-imgpos-0-2 {
+  background-position: -176px 0;
+}
+
+.puzzle-imgpos-0-3 {
+  background-position: -264px 0;
+}
+
+.puzzle-imgpos-1-0 {
+  background-position: 0 -88px;
+}
+
+.puzzle-imgpos-1-1 {
+  background-position: -88px -88px;
+}
+
+.puzzle-imgpos-1-2 {
+  background-position: -176px -88px;
+}
+
+.puzzle-imgpos-1-3 {
+  background-position: -264px -88px;
+}
+
+.puzzle-imgpos-2-0 {
+  background-position: 0 -176px;
+}
+
+.puzzle-imgpos-2-1 {
+  background-position: -88px -176px;
+}
+
+.puzzle-imgpos-2-2 {
+  background-position: -176px -176px;
+}
+
+.puzzle-imgpos-2-3 {
+  background-position: -264px -176px;
+}
+
+.puzzle-imgpos-3-0 {
+  background-position: 0 -264px;
+}
+
+.puzzle-imgpos-3-1 {
+  background-position: -88px -264px;
+}
+
+.puzzle-imgpos-3-2 {
+  background-position: -176px -264px;
+}
+
+.puzzle-imgpos-3-3 {
+  background-position: -264px -264px;
+}
+
+/* Pieces Postion */
+
+.puzzle-posx-0 {
+  top: 0;
+}
+
+.puzzle-posx-1 {
+  top: 25%;
+}
+
+.puzzle-posx-2 {
+  top: 50%;
+}
+
+.puzzle-posx-3 {
+  top: 75%;
+}
+
+.puzzle-posy-0 {
+  left: 0;
+}
+
+.puzzle-posy-1 {
+  left: 25%;
+}
+
+.puzzle-posy-2 {
+  left: 50%;
+}
+
+.puzzle-posy-3 {
+  left: 75%;
+}
+
+/* div game-control */
+
+.game-control {
+  text-align: center;
+}
+
+/* buttons */
+
+#btn-restart {
+  display: inline-block;
+  width: 122px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  background-color: #3385FA;
+  margin: 20px auto 0 auto;
+  box-shadow: 6px 6px 12px 0 #949496;
+  -o-user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 5px;
+}
+
+#btn-restart:hover {
+  background-color: #53a5ff;
+}

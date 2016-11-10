@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Puzzle</title>
+  <link rel="stylesheet" type="text/css" href="./css/puzzle.css">
+</head>
+<body class="bg-panda">
+  <div class="middle-positioner">
+    <div class="title">
+      <h1>拼图游戏</h1>
+    </div>
+    <div class="game-container"></div>
+    <div class="game-control">
+      <span id="btn-restart">重新开始</span>
+      <strong>Try other Pictures!</strong>
+      <select id="sel-img">
+        <option>Panda</option>
+        <option>Cirno</option>
+        <option>Creeper</option>
+        <option>Dragonborn</option>
+        <option>Suika</option>
+      </select>
+    </div>
+  </div>
+  <div id="original-img"></div>
+  <div id="win-hint" class="hidden">
+    Congratulations!
+  </div>
+
+  <script type="text/javascript" src="./js/utility.js"></script>
+  <script type="text/javascript" src="./js/puzzle_obj.js"></script>
+  <script type="text/javascript" src="./js/puzzle.js"></script>
+</body>
+</html>
