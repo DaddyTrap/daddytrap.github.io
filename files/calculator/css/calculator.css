@@ -1,0 +1,190 @@
+body {
+  background-image: url(../img/background.png);
+  font-family: sans-serif;
+}
+
+/* supporting line */
+/*div {
+  border: 1px solid red;
+}*/
+
+.calculator {
+  width: 375px;
+  height: 550px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid gray;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.calculator-main {
+  height: 94%;
+  margin: 3% 4% 3% 4%;
+}
+
+/* Screen Part */
+.screen-div {
+  height: 12%;
+  border-radius: 5px;
+  border: 2px solid gray;
+  padding-top: 5px;
+}
+
+.screen-positioner {
+  height: 100%;
+}
+
+.screen {
+  transition: all 1s;
+  padding: 0 5px 0 5px;
+  text-align: right;
+  color: gray;
+}
+
+.screen-num {
+  height: 35%;
+  line-height: 100%;
+  font-size: 16pt;
+}
+
+.screen-ans {
+  height: 65%;
+  line-height: 100%;
+  font-size: 30pt;
+}
+
+.strengthen {
+  transition: all 1s;
+  color: white;
+}
+
+.success {  
+  background-color: #3C763D;
+}
+
+.error {
+  background-color: red;
+}
+
+/* End of Screen Part */
+
+/* Button Part */
+.buttons {
+  margin-top: 7%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-ul {
+  margin-top: 0;
+  list-style: none;
+  padding-left: 0;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+}
+
+.btn-ul li {
+  margin-bottom: 4%;
+  transition: all 0.5s;
+}
+
+.btn-ul li:nth-child(5) {
+  margin-bottom: 0;
+}
+
+.btn-positioner {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cal-btn {
+  font-size: 25pt;
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: gray;
+  margin-left: 2%;
+  transition: all 0.3s;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+}
+
+.btn:hover {
+  transition: all 0.3s;
+  background-color: #cccccc;
+  box-shadow: 0 0 100px 0px white;
+} 
+
+.cal-btn:first-child {
+  margin-left: 0;
+}
+
+.cal-oper {
+  background-color: orange;
+}
+
+.cal-btn.cal-oper:hover {
+  transition: all 0.3s;
+  background-color: #FFCC00;  
+}
+
+  /* Block Style */
+.block-style .buttons {
+  margin-top: 7%;
+}
+
+.block-style .buttons li {
+  margin-bottom: 0;
+}
+
+.block-style .buttons .cal-btn {
+  border-radius: 0;
+  margin-left: 0;
+  width: 84px;
+  height: 84px;
+  border: 1px solid black;
+}
+  /* End Block Style */
+
+/* End of Button Part */
+
+/* Change Style Button */
+.change-style-btn-div {
+  margin-top: 1%;
+  text-align: center;
+}
+
+.change-style-btn {
+  display: inline-block;
+  transition: all 0.5s;
+  height: 50px;
+  line-height: 50px;
+  padding: 0em 3em 0em 3em;
+  text-align: center;
+  background-color: gray;
+  color: black;
+  border-radius: 5px;
+  font-size: 16pt;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  -moz-user-select: none;
+}
+
+.block-style .change-style-btn {
+  overflow: hidden;
+  padding: 0;
+  transition: all 0.5s;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+/* End Change Style Button */
