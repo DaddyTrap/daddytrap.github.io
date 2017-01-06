@@ -222,11 +222,9 @@ Windows版本较多，此处以Win7为例，Win7以上的也相仿
 <anchor id='skipg++'/>
 <br>
 
->原本，sublime的编译(build)要改文件/替换文件等等，但是有一哥们觉得这样其实挺麻烦的，而且直接改默认的设置文件并不合适，于是他给sublime做了一个用来编译的插件。
+>原本，sublime的编译(build)要改文件/替换文件等等，但是有鄙人觉得这样其实挺麻烦的，而且直接改默认的设置文件并不合适，于是给sublime做了一个用来编译的插件。
 
->不考虑我和那哥们的交情，我觉得插件想法不错，但是还是有缺陷，不过这个对初学者是已经足够的。
-
->所以本文也就采用他的[插件](https://github.com/DaddyTrap/EasyBuildCpp)吧？
+>所以本文也就提一提这个[插件](https://github.com/DaddyTrap/EasyBuildCpp)吧？
 
 ## 4.sublime的魅力所在——插件(plugin/package)
 
