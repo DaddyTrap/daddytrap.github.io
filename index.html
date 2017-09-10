@@ -2,73 +2,23 @@
 layout: default
 ---
 
-<div class="home">
+<div class="home" style="border-style: hidden solid hidden solid; border-width: 0px 1px 0px 1px; border-color: #aaaaaa; padding-left: 20px;">
 
-  <h1 class="page-heading">Tutorials</h1>
-
+  {% for category in site.categories %}
+  <!-- category[0] is the category name, category[1] is the post list in the category -->
+  <h1 class="page-heading">{{category[0]}}</h1>
   <ul class="post-list">
-    <!-- {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-    
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %} -->
-    {% for post in site.categories.Tutorial %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-    
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
+    {% assign post_list = category[1] %}
+    {% for post in post_list %}
+    <li>
+      <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+  
+      <h2>
+        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+      </h2>
+    </li>
     {% endfor %}
   </ul>
-
-  <h1 class="page-heading">Games</h1>
-
-  <ul class="post-list">
-    {% for post in site.categories.Game %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-    
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <h1 class="page-heading">Tools</h1>
-
-  <ul class="post-list">
-    {% for post in site.categories.Tool %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-    
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <h1 class="page-heading">Interests</h1>
-
-  <ul class="post-list">
-    {% for post in site.categories.Interest %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-    
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+  {% endfor %}
 
 </div>

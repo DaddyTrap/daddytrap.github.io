@@ -9,14 +9,13 @@
 title: DaddyTrap's Blog
 email: daddytrapc@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Thanks to jekyll, it is easy for me to build such an awesome blog!
-  I will post some articles about some techniques or something else.
-  I hope I will write more valuable articles.
+  Used as a blog and playground.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://daddytrap.github.io" # the base hostname & protocol for your site
 github_username:  DaddyTrap
 
 # Build settings
 markdown: kramdown
+encoding: utf-8
 
 theme: jekyll-theme-cayman
