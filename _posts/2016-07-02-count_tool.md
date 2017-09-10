@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: Counting tool
 subtitle: just for fun
 author: DaddyTrap

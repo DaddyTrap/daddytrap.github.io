@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: Clicking & Test your apm
 subtitle: though it's not very enjoyable
 author: DaddyTrap

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: 六爻占卜浅谈
 subtitle: 玄学？科学？
 author: DaddyTrap

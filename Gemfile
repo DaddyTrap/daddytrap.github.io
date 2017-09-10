@@ -1,8 +1,3 @@
-source 'https://rubygems.org/'
-gem 'github-pages', group: :jekyll_plugins
+source 'https://rubygems.org'
 
-group :test do
-  gem 'therubyracer', platform: :mri
-  gem 'therubyrhino', ">=1.73.3", platform: :jruby
-  gem 'minitest', require: false
-end
+gemspec
