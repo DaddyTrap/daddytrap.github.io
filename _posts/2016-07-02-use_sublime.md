@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title:  "配置Sublime Text 3的姿势"
 date:   2016-07-02 23:07:55 +0800
 categories: Tutorial
