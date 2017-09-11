@@ -1,6 +1,6 @@
 ---
-layout: default
-title: 作业 leetcode 3 Longest Substring Without Repeating Characters
+layout: post
+title: 作业_1 leetcode 3 Longest Substring Without Repeating Characters
 author: DaddyTrap
 date: 2017-09-10 20:17:03 +0800
 categories: Algorithm Homework
