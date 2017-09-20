@@ -4,8 +4,9 @@ layout: default
 
 {% assign priority_list = 'Homework,Tutorial' | split:',' %}
 
+{% for category_name in priority_list %}
 {% for category in site.categories %}
-{% if priority_list contains category[0] %}
+{% if category[0] == category_name %}
 <h1 class="page-heading">{{category[0]}}</h1>
 <ul class="post-list">
   {% for post in category[1] %}
@@ -19,6 +20,7 @@ layout: default
   {% endfor %}
 </ul>
 {% endif %}
+{% endfor %}
 {% endfor %}
 
 {% for category in site.categories %}
