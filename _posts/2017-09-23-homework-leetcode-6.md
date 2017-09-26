@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 作业_4 leetcode 4 Evaluate Division
+title: 作业_4 leetcode 399 Evaluate Division
 author: DaddyTrap
 date: 2017-09-23 00:32:17 +0800
 categories: Algorithm Homework
