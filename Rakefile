@@ -30,4 +30,5 @@ task :new do
       file.puts "categories: #{@categories}"
       file.puts "---"
   end
+  exec "code #{@post_name}"
 end
