@@ -85,6 +85,8 @@ Windows的操作比较直观，但是比较耗时……
 
 在命令行中运行指令 `ruby -v` ，能看到显示版本号并且版本是**2.x**就算安装成功了
 
+![ruby_installer_6](/assets/jekyll_setup/ruby_installer_6.png)
+
 #### Bundle & Jekyll
 
 首先使用gem来安装bundler，在终端(/Git Bash)输入
