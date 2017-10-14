@@ -5,5 +5,6 @@ url: "https://daddytrap.github.io"
 github_username: DaddyTrap
 email: daddytrapc@gmail.com
 theme: jekyll-theme-cayman
+repository: DaddyTrap/daddytrap.github.io
 
 exclude: ['LICENSE', 'Rakefile', 'jekyll-theme-cayman.gemspec', 'README.md', 'Gemfile', 'Gemfile.lock']
