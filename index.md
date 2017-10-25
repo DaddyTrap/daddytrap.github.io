@@ -25,7 +25,7 @@ layout: default
 
 {% for category in site.categories %}
 {% if priority_list contains category[0] %}
-{% break %}
+{% continue %}
 {% endif %}
 <!-- category[0] is the category name, category[1] is the post list in the category -->
 <h1 class="page-heading">{{category[0]}}</h1>
