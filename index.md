@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{% assign priority_list = 'Tutorial' | split:',' %}
+{% assign priority_list = 'SAD, Tutorial' | split:',' %}
 
 {% for category_name in priority_list %}
 {% for category in site.categories %}
