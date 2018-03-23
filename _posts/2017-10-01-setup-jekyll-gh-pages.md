@@ -7,6 +7,14 @@ date: 2017-10-01 11:03:25 +0800
 categories: Tutorial
 ---
 
+---
+
+Update Notes:
+
+2018.3.23 不再提供Git、Ruby的分流 (Github 的 Page Build 经常跟我说不要放二进制文件……)
+
+---
+
 ## 前言
 
 ### 不自己做个博客吗？
@@ -51,7 +59,7 @@ categories: Tutorial
 
 Windows的操作比较直观，但是比较耗时……
 
-首先下载 [**Ruby Installer**](https://rubyinstaller.org/downloads/)，如果你因为“网络原因”无法进入下载，可以试试这里 ([x64](/files/rubyinstaller-2.4.2-2-x64.exe) [x86](/files/rubyinstaller-2.4.2-2-x86.exe))
+首先下载 [**Ruby Installer**](https://rubyinstaller.org/downloads/)
 
 下载完成后打开installer
 
@@ -185,7 +193,7 @@ bundle exec jekyll serve
 
 首先，这里还是需要一个前置的配置，就是配置Git。这里推荐 [廖雪峰的Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000) ，其中包括git的各种操作。如果你打算先跟着本篇博客的步骤再学习Git，则可以先阅读 [**安装Git**](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/00137396287703354d8c6c01c904c7d9ff056ae23da865a000) 一节，然后再继续阅读本篇博客。
 
-> 由于看到上面所说的Git博客中提供的国内Git Bash版本较低，所以此处可以提供 ([Git-2.14.1-64-bit](/files/Git-2.14.1-64-bit.exe) [Git-2.14.1-32-bit](/files/Git-2.14.1-32-bit.exe))
+> 上面所说的Git博客中提供的国内Git Bash版本较低，建议到 [Git Bash的官网](https://gitforwindows.org/) 下载
 
 #### 创建Github仓库
 
