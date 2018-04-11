@@ -43,6 +43,8 @@ Update Notes:
 
 ### Jekyll
 
+<div id="Ruby" />
+
 #### Ruby
 
 首先，Jekyll是用Ruby语言写的，所以我们需要 **Ruby** 环境，且版本需要是 **2.x**
@@ -54,6 +56,8 @@ Update Notes:
 网上查找教程，会查到使用 `sudo apt-get install ruby-full` 来安装，而个人使用这个命令时，可能由于网络原因，遇到了错误。而我最终使用的是 [rbenv](https://github.com/rbenv/rbenv#basic-github-checkout) ，跟着 **Basic Github Checkout** 这一段就可以完成rbenv的安装。
 
 之后使用 `rbenv install 2.4.2`(我正在使用的版本)，即可安装ruby。
+
+<div id="RubyWindows" />
 
 ##### Windows
 

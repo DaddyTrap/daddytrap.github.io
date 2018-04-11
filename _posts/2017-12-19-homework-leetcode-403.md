@@ -100,7 +100,7 @@ DP[stones.back()].size();
 ```c++
 bool canCross(vector<int>& stones) {
     if (stones.size() <= 1) return true;
-    map<int, unordered_set<int>> dp = {{0, {0}}};
+    map<int, unordered_set<int>> dp = { {0, {0}} };
     for (auto i : stones) {
         for (auto it = dp[i].begin(); it != dp[i].end(); ++it) {
             if (*it - 1 > 0) dp[i + *it - 1].insert(*it - 1);
