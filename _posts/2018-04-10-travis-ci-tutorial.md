@@ -12,6 +12,7 @@ categories: Tutorial Github
 + [持续集成服务 Travis CI 教程](http://www.ruanyifeng.com/blog/2017/12/travis_ci_tutorial.html)
 + [SSH deploys with Travis CI](https://oncletom.io/2016/travis-ssh-deploy/)
 + [Auto-Deploying via Travis CI](https://gist.github.com/nickbclifford/16c5be884c8a15dca02dca09f65f97bd)
++ [Encrypting Files - Travis CI](https://docs.travis-ci.com/user/encrypting-files/#Using-OpenSSL)
 
 ## 前言
 
