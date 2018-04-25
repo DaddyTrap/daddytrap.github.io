@@ -8,7 +8,7 @@
 
 Nethack 是一个在命令行上的 Rougue-like 游戏，你扮演一个角色，在地下城中探索，目标是为自己的信奉的神取得 Yendor 的项链。
 
-![Alt text](assets/nethack-screenshot.png)
+![Alt text](/assets/nethack-screenshot.png)
 
 界面如上图， `@` 是自己的位置，`.` 是房间中的地面， `#` 是则是其他的路 (还有很多的表示)，`-` 和 `|` 根据 位置/颜色 可能是墙，也可能是打开的门，等等
 
