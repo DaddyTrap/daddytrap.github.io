@@ -1,7 +1,7 @@
 ---
 layout: post
-title: 系统分析与设计 第四次作业(lesson6) (WIP)
-subtitle: 
+title: 系统分析与设计 第四次作业(lesson6)
+subtitle:
 author: DaddyTrap
 date: 2018-04-14 10:36:55 +0800
 categories: SAD Homework
