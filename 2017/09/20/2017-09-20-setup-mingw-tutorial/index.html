@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Edit (2018.3.23): 现在的我觉得，或许 TDM-GCC 是一个更好的选择   前言前几天周一赶着去上10点的课的路上，大概是在中环红绿灯那里听到两位仁兄在聊 Dev-cpp 和 Visual Studio 。其中聊VS的仁兄表示没有听说过Dev-cpp，而说Dev-cpp的仁兄则是说听师兄说初学用Dev-cpp比较好。如此听来，应该是17级的新生吧？正好心血来潮想给 新同学 一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Windows配置MinGW">
+<meta property="og:url" content="http://yoursite.com/2017/09/20/2017-09-20-setup-mingw-tutorial/index.html">
+<meta property="og:site_name" content="DaddyTrap&#39;s blog">
+<meta property="og:description" content="Edit (2018.3.23): 现在的我觉得，或许 TDM-GCC 是一个更好的选择   前言前几天周一赶着去上10点的课的路上，大概是在中环红绿灯那里听到两位仁兄在聊 Dev-cpp 和 Visual Studio 。其中聊VS的仁兄表示没有听说过Dev-cpp，而说Dev-cpp的仁兄则是说听师兄说初学用Dev-cpp比较好。如此听来，应该是17级的新生吧？正好心血来潮想给 新同学 一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/extra_1.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/install_0.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/install_1.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/install_2.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/install_3.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/install_4.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/install_5.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/install_6.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/install_7.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/env_0.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/env_1.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/env_2.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/env_3.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/env_4.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/extra_0.png">
+<meta property="og:image" content="http://yoursite.com/assets/setup-mingw-tutorial/extra_1.png">
+<meta property="og:updated_time" content="2018-09-30T13:11:50.575Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Windows配置MinGW">
+<meta name="twitter:description" content="Edit (2018.3.23): 现在的我觉得，或许 TDM-GCC 是一个更好的选择   前言前几天周一赶着去上10点的课的路上，大概是在中环红绿灯那里听到两位仁兄在聊 Dev-cpp 和 Visual Studio 。其中聊VS的仁兄表示没有听说过Dev-cpp，而说Dev-cpp的仁兄则是说听师兄说初学用Dev-cpp比较好。如此听来，应该是17级的新生吧？正好心血来潮想给 新同学 一">
+<meta name="twitter:image" content="http://yoursite.com/assets/setup-mingw-tutorial/extra_1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/20/2017-09-20-setup-mingw-tutorial/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Windows配置MinGW | DaddyTrap's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DaddyTrap's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/20/2017-09-20-setup-mingw-tutorial/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DaddyTrap/PlusC">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaddyTrap's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Windows配置MinGW
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2017-09-20 20:56:52" itemprop="dateCreated datePublished" datetime="2017-09-20T20:56:52+08:00">2017-09-20</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-30 21:11:50" itemprop="dateModified" datetime="2018-09-30T21:11:50+08:00">2018-09-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<blockquote>
+<p>Edit (2018.3.23): 现在的我觉得，或许 <a href="http://tdm-gcc.tdragon.net/download" target="_blank" rel="noopener">TDM-GCC</a> 是一个更好的选择</p>
+</blockquote>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前几天周一赶着去上10点的课的路上，大概是在中环红绿灯那里听到两位仁兄在聊 <em>Dev-cpp</em> 和 <em>Visual Studio</em> 。其中聊VS的仁兄表示没有听说过Dev-cpp，而说Dev-cpp的仁兄则是说听师兄说初学用Dev-cpp比较好。如此听来，应该是17级的新生吧？正好心血来潮想给 <em>新同学</em> 一些人生经验，正好一不小心听到这个话题，不如就试着写个关于 <strong>编译器</strong> 的博客吧。(所以说老同学可能就早就懂这些东西啦……)</p>
+<a id="more"></a>
+<h3 id="VS-Dev-或是-…"><a href="#VS-Dev-或是-…" class="headerlink" title="VS? Dev? 或是 …?"></a>VS? Dev? 或是 …?</h3><p>严谨一点说，VS和Dev应该称为 <code>IDE(Integrated Development Environment, 集成开发环境)</code> 比较合适，因为它们包含了 <em>编辑器、编译器、调试器</em> 三件套，而且提供了一些 “项目配置” 的选项。</p>
+<p>这里再补充一下上面所说的三件套的概念</p>
+<ul>
+<li>编辑器，文本编辑器，用来打代码的地方，如notepad++，一般只需要提供编辑文本的功能即可，如记事本也能作为编辑器</li>
+<li>编译器，将代码文件转变为可执行文件的程序，对于C语言和C++，一般使用 <code>gcc</code> 或者 <code>clang</code> 等等，如果使用过linux编程的话应该会对 <code>gcc</code> 有印象</li>
+<li>调试器，调试可执行程序的工具，使用断点、单步执行等操作使开发者能跟踪程序执行找到出错的地方，以便修改代码</li>
+</ul>
+<p>关于VS还是Dev的这个问题，我也觉得不能马上说哪个好哪个不好，所以就分享一些个人的见解吧</p>
+<ul>
+<li>Visual Studio<ul>
+<li>VS是微软的一个大型IDE，有着非常强大的功能，特别是编写与微软产品有关的软件时必不可少，如UWP等</li>
+<li>然而，也因为VS几乎面面俱到，也就显得有点臃肿，占用空间大概10G以上、打开时候较慢</li>
+</ul>
+</li>
+<li>Dev-cpp<ul>
+<li>Dev-cpp相对来说，就十分地轻量，为什么总会把这个推荐给初学者，大概就是因为轻量和操作简单吧</li>
+<li>而缺点是，个人觉得它的自动缩进比较迷，另外有时也会出现一些奇怪的bug</li>
+</ul>
+</li>
+</ul>
+<p>下面就吹一吹今天的主角 <code>MinGW (Minimal GNU for Windows)</code> 了</p>
+<p><code>MinGW</code> 使得在Windows下也可以使用一些linux上的东西，比如 <code>gcc</code> 。安装了 <code>MinGW</code> 之后就可以像在linux上的时候一样，在 <code>cmd</code> 或者 <code>powershell</code> 上用 <code>gcc main.c</code> 这样的命令来编译代码了</p>
+<p><img src="/assets/setup-mingw-tutorial/extra_1.png" alt="compile"></p>
+<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>方便起见，这里直接使用了 <code>MinGW Installer</code></p>
+<p>下载地址是： <a href="https://sourceforge.net/projects/mingw/files/latest/download?source=files" target="_blank" rel="noopener">https://sourceforge.net/projects/mingw/files/latest/download?source=files</a></p>
+<p>下载完成，直接打开开始安装</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><img src="/assets/setup-mingw-tutorial/install_0.png" alt="install_0"></p>
+<p>这里可以直接点 <strong>Install</strong> ，然后下一个对话框可以选择安装的目录(要记得自己选的目录)，等待下载、安装……</p>
+<p><img src="/assets/setup-mingw-tutorial/install_1.png" alt="install_1"></p>
+<p>这里就直接点 <strong>Continue</strong> ，但这还没完，这才只安装了一个管理器。</p>
+<p>打开管理器后，在 <strong>Basic Setup</strong> 中找到 <strong>mingw32-gcc-g++</strong> 右键选择 <strong>Mark for Installation</strong></p>
+<p><img src="/assets/setup-mingw-tutorial/install_2.png" alt="install_2"></p>
+<p>选中后，点击左上角的 <strong>Installation – Apply Changes</strong></p>
+<p><img src="/assets/setup-mingw-tutorial/install_3.png" alt="install_3"></p>
+<p>弹出窗口，直接 <strong>Apply</strong></p>
+<p><img src="/assets/setup-mingw-tutorial/install_4.png" alt="install_4"></p>
+<p>然后又是比较漫长的等待下载、安装过程，最后到下面这里，就可以点击 <strong>Close</strong> 了</p>
+<p><img src="/assets/setup-mingw-tutorial/install_5.png" alt="install_5"></p>
+<p>最后进入自己选择的安装目录，确认一下东西是不是都在了</p>
+<p><img src="/assets/setup-mingw-tutorial/install_6.png" alt="install_6"><br><img src="/assets/setup-mingw-tutorial/install_7.png" alt="install_7"></p>
+<p>如果没有问题，那么就可以进入下一阶段了</p>
+<h3 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h3><p>虽然是安装好了，但是并不能就这样轻易地在 <code>cmd</code> 打开。对环境变量有一定了解的同学应该知道，有一个叫做 <code>Path</code> 的环境变量非常关键，在命令行中输入命令基本上就是在 <code>Path</code> 所指定的路径中找跟命令相同名字的程序 —— 也就是说，我们要让 <code>Path</code> 中含有 <code>gcc</code> 编译器的路径，才能直接在cmd中输入gcc来编译代码。做法如下</p>
+<p>对 <code>这台电脑</code> / <code>我的电脑</code> / <code>此电脑</code> 右键 – 属性</p>
+<p><img src="/assets/setup-mingw-tutorial/env_0.png" alt="env_0"></p>
+<p>然后根据下图的灵魂涂鸦进行操作</p>
+<p><img src="/assets/setup-mingw-tutorial/env_1.png" alt="env_1"></p>
+<p>上面的操作所做的是新建一个叫做 <code>BuildTools</code> 的环境变量，用于记录 <code>MinGW</code> 的根目录，因此变量值应该根据自己所选择的安装目录来修改。</p>
+<p>然后再编辑 <code>Path</code> 变量，根据下图的灵魂涂鸦进行操作</p>
+<p><img src="/assets/setup-mingw-tutorial/env_2.png" alt="env_2"></p>
+<blockquote>
+<p>上面说到我们要改的应该只是 <code>Path</code> 这个环境变量，那么为什么还要写一个 <code>BuildTools</code> 呢？如果你了解C语言中 <code>const</code> 变量、<code>#define</code> 宏定义的一些应用，或许自然就能理解了。</p>
+</blockquote>
+<blockquote>
+<p>以我的设置为例，如果不用新建 <code>BuildTools</code> 变量，那么在 <code>Path</code> 中应该要写 <code>xxx;C:\MinGW\bin</code> ，那么假设我将MinGW移动到了另一个位置，那么我就要直接改动 <code>Path</code> 变量。这似乎没有什么问题，但如果我在 <code>Path</code> 中原本是这样 (<code>xxx;C:\MinGW\bin;C:\MinGW\bin2;C:\MinGW\bin3</code>) 呢？</p>
+</blockquote>
+<blockquote>
+<p>如果使用 <code>%BuildTools%</code> ，在MinGW移动后，只需要改动 <code>BuildTools</code> 这一个变量，就可以使 <code>Path</code> 变量也随之改变 —— 这便是多一个变量的好处之一</p>
+</blockquote>
+<p>到这里配置已经完成了，下面就测试一下配置是否成功啦</p>
+<p>按下 Win+R (Win指Windows徽标键) 呼出“运行”，在其中输入 <code>cmd</code> 或者 <code>powershell</code> 呼出命令行，在其中输入 <code>gcc --version</code> 并按下回车键，如果没有什么报错就是已经配置好了</p>
+<p><img src="/assets/setup-mingw-tutorial/env_3.png" alt="env_3"></p>
+<p>那么不妨试着写个Hello World，编译运行一波</p>
+<p><img src="/assets/setup-mingw-tutorial/env_4.png" alt="env_4"></p>
+<h2 id="Extra"><a href="#Extra" class="headerlink" title="Extra"></a>Extra</h2><p>说是extra，其实只是不知道应该插在正文的哪里而已……</p>
+<p>有时候代码的目录很深，一层一层cd非常痛苦，所以可以直接在资源管理器中打开到有代码文件的文件夹，在没有选中任何文件时，<strong>按住shift在空白处右键</strong>，便能找到 <strong>在此处打开命令窗口</strong>。打开之后就直接到了这一目录了，也就省去了cd的麻烦。</p>
+<p><img src="/assets/setup-mingw-tutorial/extra_0.png" alt="extra_0"><br><img src="/assets/setup-mingw-tutorial/extra_1.png" alt="extra_1"></p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>实际上，有心的同学可能会发现Dev-cpp的文件夹中，就有一个叫mingw的文件夹 —— 没有错，实际上Dev-cpp就只是mingw的一层壳，我们可以通过Dev-cpp来使用编译器gcc，但我们也可以不通过它而直接使用gcc，这就是这一个简单Tutorial中所讲述的内容。</p>
+<p>希望你能在这学会 <strong>在命令行中编译代码并运行</strong> ，享受撞壁的快感～</p>
+<p>而如果是大佬们觉得鄙人有哪里写的不好，还请不吝赐教了……</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/18/2017-09-18-homework-leetcode-4/" rel="next" title="作业_2 leetcode 4 Median of Two Sorted Arrays">
+                <i class="fa fa-chevron-left"></i> 作业_2 leetcode 4 Median of Two Sorted Arrays
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/21/2017-09-21-homework-leetcode-5/" rel="prev" title="作业_3 leetcode 5 Longest Palindromic Substring">
+                作业_3 leetcode 5 Longest Palindromic Substring <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DaddyTrap/PlusC</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VS-Dev-或是-…"><span class="nav-number">1.1.</span> <span class="nav-text">VS? Dev? 或是 …?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正题"><span class="nav-number">2.</span> <span class="nav-text">正题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载"><span class="nav-number">2.1.</span> <span class="nav-text">下载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量"><span class="nav-number">2.3.</span> <span class="nav-text">配置环境变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Extra"><span class="nav-number">3.</span> <span class="nav-text">Extra</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">4.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DaddyTrap/PlusC</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

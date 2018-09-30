@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Update Notes: 2016.7.7 更新Windows编译环境配置，对一些地方做小修改 2016.7.8 14:51 加入 Sublime的设置 一节 2016.7.8 16:35 修改一点格式 2018.3.23 现在本人已经改用 vscode 啦！   本教程适用于新手，若有错误，烦请大神指正 虽然标题是配置Sublime Text 3的姿势，但是在配置编译环境一节中涉及了较多不属于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="配置Sublime Text 3的姿势">
+<meta property="og:url" content="http://yoursite.com/2016/07/02/2016-07-02-use_sublime/index.html">
+<meta property="og:site_name" content="DaddyTrap&#39;s blog">
+<meta property="og:description" content="Update Notes: 2016.7.7 更新Windows编译环境配置，对一些地方做小修改 2016.7.8 14:51 加入 Sublime的设置 一节 2016.7.8 16:35 修改一点格式 2018.3.23 现在本人已经改用 vscode 啦！   本教程适用于新手，若有错误，烦请大神指正 虽然标题是配置Sublime Text 3的姿势，但是在配置编译环境一节中涉及了较多不属于">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/notepad++_origin.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/notepad++_mine.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/sublime.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/sublime_build.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/sublime_default_settings.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/mingw_download.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/mingw_install.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/windows_env0.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/windows_env1.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/windows_env2.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/sublime_package_control.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/sublime_pci.png">
+<meta property="og:image" content="http://yoursite.com/assets/use_sublime_pics/sublime_pci_exec.png">
+<meta property="og:updated_time" content="2018-09-30T13:11:31.689Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="配置Sublime Text 3的姿势">
+<meta name="twitter:description" content="Update Notes: 2016.7.7 更新Windows编译环境配置，对一些地方做小修改 2016.7.8 14:51 加入 Sublime的设置 一节 2016.7.8 16:35 修改一点格式 2018.3.23 现在本人已经改用 vscode 啦！   本教程适用于新手，若有错误，烦请大神指正 虽然标题是配置Sublime Text 3的姿势，但是在配置编译环境一节中涉及了较多不属于">
+<meta name="twitter:image" content="http://yoursite.com/assets/use_sublime_pics/notepad++_origin.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/02/2016-07-02-use_sublime/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>配置Sublime Text 3的姿势 | DaddyTrap's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DaddyTrap's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/02/2016-07-02-use_sublime/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DaddyTrap/PlusC">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaddyTrap's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">配置Sublime Text 3的姿势
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2016-07-02 23:07:55" itemprop="dateCreated datePublished" datetime="2016-07-02T23:07:55+08:00">2016-07-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-30 21:11:31" itemprop="dateModified" datetime="2018-09-30T21:11:31+08:00">2018-09-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Tutorial/" itemprop="url" rel="index"><span itemprop="name">Tutorial</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Update Notes:</p>
+<p>2016.7.7 更新Windows编译环境配置，对一些地方做小修改</p>
+<p>2016.7.8 14:51 加入 <a href="#env"><strong>Sublime的设置</strong></a> 一节</p>
+<p>2016.7.8 16:35 修改一点格式</p>
+<p>2018.3.23 现在本人已经改用 <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">vscode</a> 啦！</p>
+<hr>
+<p><br></p>
+<p>本教程适用于新手，若有错误，烦请大神指正</p>
+<p>虽然标题是<strong>配置Sublime Text 3的姿势</strong>，但是在<a href="#env">配置编译环境</a>一节中涉及了较多不属于Sublime的知识……这是因为希望初学编程的同学提前学多一点东西，比鄙人少走一些弯路</p>
+<blockquote>
+<p>教程仍在施工阶段，若有想要鄙人说说的不妨<a href="mailto:daddytrapc@gmail.com" target="_blank" rel="noopener">邮件</a> (<a href="mailto:daddytrapc@gmail.com" target="_blank" rel="noopener">daddytrapc@gmail.com</a>)</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="为什么用Sublime-Text"><a href="#为什么用Sublime-Text" class="headerlink" title="为什么用Sublime Text?"></a><strong>为什么用Sublime Text?</strong></h2><blockquote>
+<p>如果你已经很明确你要学习sublime,那么这段就可以<a href="#jumptostart">跳过</a>了</p>
+</blockquote>
+<p><br></p>
+<hr>
+<h2 id="1-编辑器方面"><a href="#1-编辑器方面" class="headerlink" title="1.编辑器方面"></a>1.编辑器方面</h2><p>作为Notepad++的替代品。</p>
+<p>在刚上大学的时候，鄙人用的是Notepad++来编写代码</p>
+<p>其实确实是一个很好用的文本编辑器，然而不尽人意的地方就在于——它的主题配色</p>
+<p><img src="/assets/use_sublime_pics/notepad++_origin.png" alt="notepad++_origin"></p>
+<p>其实作为一个可以个性化的文本编辑器(总之不要用Windows的Notepad就好了……)……它确实是可以调主题的</p>
+<p>即便如此，效果还是不佳</p>
+<p><img src="/assets/use_sublime_pics/notepad++_mine.png" alt="notepad++_mine"></p>
+<p>可以看出，主题配色变了，然而窗口的边框还是生硬的<strong>白色</strong>……</p>
+<p>或许是鄙人寡闻，不知道有改边框的方法，但是第一次见到sublime就被酷炫的主题色吸引到了(虽说也有人吐槽sublime的原配色难看……)</p>
+<p>下面放一下我的sublime大家感受一下吧</p>
+<p><img src="/assets/use_sublime_pics/sublime.png" alt="sublime"></p>
+<hr>
+<h2 id="2-编译器方面"><a href="#2-编译器方面" class="headerlink" title="2.编译器方面"></a>2.编译器方面</h2><p>作为Dev-cpp的替代品。</p>
+<p>（当然，应该说Dev-cpp是IDE(笑)，sublime是编辑器，不应该说用sublime“替代”Dev-cpp。）</p>
+<p>以前是用Notepad++和Dev-cpp的组合来编写、编译代码的，然而我的Dev-cpp有很多让我蛋疼的地方……</p>
+<p>例如……</p>
+<ul>
+<li><p>有时能用有时抽风的Debugger</p>
+</li>
+<li><p>让人捉摸不透的自动缩进</p>
+</li>
+<li><p>不是特别好看的高亮</p>
+</li>
+</ul>
+<p>噢……我想Dev-cpp就不需要截图了……(我已经不太想打开它了……)</p>
+<p>舍弃Notepad++的重要原因其实就在于，sublime可以在编辑器里面<strong>快捷键编译</strong>，这也是“替代”Dev-cpp的一个原因(不过这个功能，由于之后面对了很多 多文件同时编译的问题，逐渐被我抛弃……)</p>
+<blockquote>
+<p>我个人不喜欢Dev-cpp，仅代表个人意见，不引战。。。</p>
+</blockquote>
+<p><img src="/assets/use_sublime_pics/sublime_build.png" alt="sublime"></p>
+<p><del>Ctrl+Shift+B即可编译运行，这可是很方便哦</del>(下面提供一种更合适的方法编译)</p>
+<blockquote>
+<p><del>对了上面的sort代码是错的</del></p>
+</blockquote>
+<p>扯这么多纯属安利，下面进入正题。</p>
+<hr>
+<p><anchor id="jumptostart"></anchor></p>
+<h1 id="这里开始吧"><a href="#这里开始吧" class="headerlink" title="这里开始吧"></a>这里开始吧</h1><h2 id="1-下载"><a href="#1-下载" class="headerlink" title="1.下载"></a>1.下载</h2><p><a href="http://www.sublimetext.com/3" target="_blank" rel="noopener">点这里</a></p>
+<p>找到符合自己的系统下载就好了</p>
+<anchor id="env">
+
+<h2 id="2-Sublime的设置"><a href="#2-Sublime的设置" class="headerlink" title="2.Sublime的设置"></a>2.Sublime的设置</h2><p>Ubuntu下可以将鼠标放到屏幕顶部，找到一些设置项；Windows下可以在窗口顶部看到设置项。</p>
+<p>然而你会发现，你可以设置的东西并不是很多。Sublime的个性化设置如此之少吗？其实并不是。</p>
+<p><code>Preference-&gt;Settings -- Default</code></p>
+<p>点击之后会弹出一个文件，这个就是Sublime的默认配置文件。也就是说，修改这里的值，就会使相应的配置改变。</p>
+<p><img src="/assets/use_sublime_pics/sublime_default_settings.png" alt="sublime_default_settings"></p>
+<p><em>但是</em>，不是直接在这里修改(你也会发现你修改不了)。而是<code>Preference-&gt;Settings -- User</code>打开一个User配置文件。</p>
+<p>如果它是空的，不要惊讶，这是因为你确实没有改过它。</p>
+<p>模仿Default文件，先输入一对大括号(<code>{}</code>)。我们可以先尝试改变字体大小，并以此为例示范一下我们一般怎么修改User配置文件。</p>
+<p><br></p>
+<ol>
+<li><p>在Default文件中找到我们想要的属性的确定名称。例如我们不确定字体大小应该是<code>fontSize</code>还是<code>font_size</code>，所以要确认清楚</p>
+</li>
+<li><p>将Default文件中的该行复制到User文件中，再在User文件中修改它的值</p>
+</li>
+<li><p>保存，完成</p>
+</li>
+</ol>
+<p><br></p>
+<p>贴上这一步之后的代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">"font_size"</span>: <span class="number">14</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存后你会发现，字体大小马上变了。这就是配置文件的作用</p>
+<p>有些同学可能会发现，User文件原本就有东西，这有可能是你用快捷键/菜单栏等修改了配置，Sublime帮你写在了文件里。</p>
+<p>例如，可以尝试<code>ctrl+= / ctrl+-</code>来调整字体大小，你会发现你自己的User文件也会随其变化</p>
+<p>这就说明，你所有的个性化设置，都会记录在User文件中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我的配置文件</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="string">"color_scheme"</span>: <span class="string">"Packages/User/SublimeLinter/Monokai Extended (SL).tmTheme"</span>, <span class="comment">// 颜色配色方案</span></span><br><span class="line">	<span class="string">"font_size"</span>: <span class="number">14</span>, <span class="comment">// 字体大小</span></span><br><span class="line">	<span class="string">"tab_size"</span>: <span class="number">2</span>, <span class="comment">// Tab大小</span></span><br><span class="line">	<span class="string">"translate_tabs_to_spaces"</span>: <span class="literal">true</span> <span class="comment">// 是否将Tab转化为Space(鄙人的学校曾经由谷歌风格的要求)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-配置编译环境"><a href="#3-配置编译环境" class="headerlink" title="3.配置编译环境"></a>3.配置编译环境</h2><p>我想大家应该还是知道 <strong>g++(编译器)</strong> 一般是需要安装的……但是为了初学者能流畅地读下来，还是需要聊聊</p>
+<p>不需要的可以<a href="#skipg++">跳过</a></p>
+<h3 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h3><p><code>Ctrl+Alt+T</code> 呼出终端，然后输入<code>sudo apt-get install build-essential</code></p>
+<h3 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h3><p><strong>1.下载/安装MinGW</strong></p>
+<p>在这里<a href="https://sourceforge.net/projects/mingw/files/" target="_blank" rel="noopener">下载</a></p>
+<p><img src="/assets/use_sublime_pics/mingw_download.png" alt="MinGW_Download"></p>
+<p>安装则按默认配置安装即可，若其中修改了安装路径，<strong>请确定自己记得，之后要找到</strong></p>
+<p>然而刚刚安装的只是MinGW的安装器而已，接下来就用它来安装MinGW</p>
+<p><img src="/assets/use_sublime_pics/mingw_install.png" alt="MinGW_Install"></p>
+<p>如上图，右键需要安装的项(我们需要的主要是g++)，选择”Mark for Installation”，如果不清楚可以将Basic的全选</p>
+<p>选好后，点击左上角的<code>Installation-&gt;Apply Changes</code>，安装器就会自动安装所选项了</p>
+<p><strong>2.配置环境变量</strong></p>
+<p>这一步为的是让Windows的命令行像Ubuntu的命令行一样，可以<strong>直接使用</strong>“g++ source.cpp”这样的指令，而不用指出g++所在位置</p>
+<p>Windows版本较多，此处以Win7为例，Win7以上的也相仿</p>
+<p>先新建一个叫做”Compilers”的环境变量，用于保存编译器的位置，如下图。变量值填自己MinGW安装位置+\bin</p>
+<p><img src="/assets/use_sublime_pics/windows_env0.png" alt="env0"></p>
+<blockquote>
+<p>(实际上新建变量这一步可选，但是为了环境变量的方便管理，我比较推荐像这样新建环境变量)</p>
+</blockquote>
+<p>再编辑Path环境变量</p>
+<p><strong>Path变量：Windows在运行系统指令时，会在Path记录的地址里寻找对应的可执行文件来执行</strong></p>
+<p>我们需要把g++的路径加到这里来，否则我们不能直接在命令行中使用它</p>
+<p>找到<code>Path-&gt;选中-&gt;编辑</code>，变量值最后加上”;%Compilers%”(注意最前有分号)，如下图</p>
+<p><img src="/assets/use_sublime_pics/windows_env1.png" alt="env1"></p>
+<p>做完这些之后，打开命令行窗口(cmd)(Win+R,输入cmd,enter)，测试一下</p>
+<p>输入<code>g++ --version</code>，如果输出类似下图就证明安装成功了</p>
+<p><img src="/assets/use_sublime_pics/windows_env2.png" alt="env2"></p>
+<hr>
+<p><anchor id="skipg++"><br><br></anchor></p>
+<blockquote>
+<p>原本，sublime的编译(build)要改文件/替换文件等等，但是有鄙人觉得这样其实挺麻烦的，而且直接改默认的设置文件并不合适，于是给sublime做了一个用来编译的插件。</p>
+</blockquote>
+<blockquote>
+<p>所以本文也就提一提这个<a href="https://github.com/DaddyTrap/EasyBuildCpp" target="_blank" rel="noopener">插件</a>吧？</p>
+</blockquote>
+<h2 id="4-sublime的魅力所在——插件-plugin-package"><a href="#4-sublime的魅力所在——插件-plugin-package" class="headerlink" title="4.sublime的魅力所在——插件(plugin/package)"></a>4.sublime的魅力所在——插件(plugin/package)</h2><h3 id="1-第一步：安装Package-Control"><a href="#1-第一步：安装Package-Control" class="headerlink" title="1.第一步：安装Package Control"></a>1.第一步：安装Package Control</h3><p>Package Control是一个插件管理工具，使用它，可以很方便地对插件进行安装、卸载、禁用等，因此一般使用sublime都会安装它。</p>
+<p>参考：<a href="https://packagecontrol.io/installation" target="_blank" rel="noopener">Package Control</a></p>
+<p><code>Ctrl+`</code> 呼出控制台窗口，将</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = &apos;2915d1851351e5ee549c20394736b442&apos; + &apos;8bc59f460fa1548d1514676163dafc88&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</span><br></pre></td></tr></table></figure>
+<p>复制到其中，enter运行，稍等片刻Package Control就安装好了。以防万一，还是重启一下sublime。</p>
+<blockquote>
+<p>有时候会遇到错误，不要紧张，重启sublime再试一次(hhhhhh)</p>
+</blockquote>
+<p>测试是否安装成功：Shift+Ctrl+P呼出命令面板(command_palette)</p>
+<p>输入”package control”或者简单地输入”pc”，如果下面的模糊搜索出现了”Package Control: …”的结果，就证明安装成功了。</p>
+<p><img src="/assets/use_sublime_pics/sublime_package_control.png" alt="package control"></p>
+<h3 id="2-第二步：下载插件"><a href="#2-第二步：下载插件" class="headerlink" title="2.第二步：下载插件"></a>2.第二步：下载插件</h3><p>接下来，是时候展示真正的Package Control了</p>
+<p><code>Ctrl+Shift+P</code>呼出命令面板，输入”pci”(Package Control: Install Package)，Enter</p>
+<p><img src="/assets/use_sublime_pics/sublime_pci.png" alt="sublime_pci"></p>
+<p>然后就会出现各种插件了</p>
+<p><img src="/assets/use_sublime_pics/sublime_pci_exec.png" alt="sublime_pci_exec"></p>
+<p>跟命令面板相似，可以“模糊搜索”</p>
+<p>搜索到插件后，确认选中了该插件后，Enter即可，进度条在左下角</p>
+<p>一会儿，插件就会安装完成。一些插件安装完后会有文档弹出，建议仔细阅读，以便于更好地理解如何使用</p>
+<p>个人推荐的插件：</p>
+<ul>
+<li><p>ClangFormat 可以使代码“格式化”，就是自动调整缩进等等，支持谷歌风格(需要clang-format支持)</p>
+</li>
+<li><p>Emmet 写前端代码的神器，网上教程较多，此处不赘述</p>
+</li>
+<li><p>Monokai Extended 更好的代码高亮</p>
+</li>
+</ul>
+<p>关于自动补全的插件，我不太好推荐，因为我对自己现在使用的补全(ClangAutoComplete)不算特别满意</p>
+<p>据说sublime的YouCompleteMe也是很好的，但是我还不会安装</p>
+<h3 id="4-快捷键使用"><a href="#4-快捷键使用" class="headerlink" title="4.快捷键使用"></a>4.快捷键使用</h3><p>我自己常用的快捷键：</p>
+<ul>
+<li><p><code>Ctrl+Enter</code> 不管光标在该行的何处，在此行下插入一个新行并将光标移下</p>
+</li>
+<li><p><code>Ctrl+Shift+Enter</code> 不管光标在该行的何处，在此行上插入一个新行并将光标移上</p>
+</li>
+<li><p><code>Ctrl+L</code> 选中该行</p>
+</li>
+<li><p><code>Ctrl+K, Ctrl+K</code> 从光标处开始删除该行</p>
+</li>
+<li><p><code>Ctrl+D</code> 搜索下一个与选中字符串相同的字符串并选中</p>
+</li>
+<li><p><code>Ctrl+G</code> 呼出面板，输入数字跳转到所输入的行数</p>
+</li>
+<li><p><code>Ctrl+Shift+Up/Down</code>(方向键) 将该行向上/下移动一行</p>
+</li>
+<li><p><code>Ctrl+/</code> 注释光标所在行</p>
+</li>
+<li><p><code>Ctrl+Shift+/</code> 注释所选区块(区块注释)</p>
+</li>
+</ul>
+</anchor>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/10/15/2015-10-15-six-yao-divine/" rel="next" title="六爻占卜浅谈">
+                <i class="fa fa-chevron-left"></i> 六爻占卜浅谈
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/10/2017-09-10-homework-leetcode-3/" rel="prev" title="作业_1 leetcode 3 Longest Substring Without Repeating Characters">
+                作业_1 leetcode 3 Longest Substring Without Repeating Characters <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DaddyTrap/PlusC</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用Sublime-Text"><span class="nav-number">1.</span> <span class="nav-text">为什么用Sublime Text?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-编辑器方面"><span class="nav-number">2.</span> <span class="nav-text">1.编辑器方面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-编译器方面"><span class="nav-number">3.</span> <span class="nav-text">2.编译器方面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#这里开始吧"><span class="nav-number"></span> <span class="nav-text">这里开始吧</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-下载"><span class="nav-number">1.</span> <span class="nav-text">1.下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Sublime的设置"><span class="nav-number">2.</span> <span class="nav-text">2.Sublime的设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-配置编译环境"><span class="nav-number">3.</span> <span class="nav-text">3.配置编译环境</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Ubuntu"><span class="nav-number">3.1.</span> <span class="nav-text">Ubuntu</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Windows"><span class="nav-number">3.2.</span> <span class="nav-text">Windows</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-sublime的魅力所在——插件-plugin-package"><span class="nav-number">4.</span> <span class="nav-text">4.sublime的魅力所在——插件(plugin/package)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-第一步：安装Package-Control"><span class="nav-number">4.1.</span> <span class="nav-text">1.第一步：安装Package Control</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-第二步：下载插件"><span class="nav-number">4.2.</span> <span class="nav-text">2.第二步：下载插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-快捷键使用"><span class="nav-number">4.3.</span> <span class="nav-text">4.快捷键使用</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DaddyTrap/PlusC</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

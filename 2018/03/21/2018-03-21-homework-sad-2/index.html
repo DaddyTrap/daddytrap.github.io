@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统分析与设计 第二次作业">
+<meta property="og:url" content="http://yoursite.com/2018/03/21/2018-03-21-homework-sad-2/index.html">
+<meta property="og:site_name" content="DaddyTrap&#39;s blog">
+<meta property="og:description" content="简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-30T13:21:16.798Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统分析与设计 第二次作业">
+<meta name="twitter:description" content="简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/03/21/2018-03-21-homework-sad-2/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>系统分析与设计 第二次作业 | DaddyTrap's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DaddyTrap's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/03/21/2018-03-21-homework-sad-2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DaddyTrap/PlusC">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaddyTrap's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">系统分析与设计 第二次作业
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-03-21 20:13:44" itemprop="dateCreated datePublished" datetime="2018-03-21T20:13:44+08:00">2018-03-21</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-30 21:21:16" itemprop="dateModified" datetime="2018-09-30T21:21:16+08:00">2018-09-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Homework-SAD/" itemprop="url" rel="index"><span itemprop="name">Homework SAD</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。"><a href="#简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。" class="headerlink" title="简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。"></a>简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。</h2><a id="more"></a>
+<ul>
+<li><p>瀑布模型</p>
+<ul>
+<li>优点<ul>
+<li>为项目提供了按阶段划分的检查点。</li>
+<li>当前一阶段完成后，您只需要去关注后续阶段。</li>
+<li>可在迭代模型中应用瀑布模型。</li>
+<li>它提供了一个模板，这个模板使得分析、设计、编码、测试和支持的方法可以在该模板下有一个共同的指导。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>各个阶段的划分完全固定，阶段之间产生大量的文档，极大地增加了工作量。</li>
+<li>由于开发模型是线性的，用户只有等到整个过程的末期才能见到开发成果，从而增加了开发风险。</li>
+<li>通过过多的强制完成日期和里程碑来跟踪各个项目阶段。</li>
+<li>瀑布模型的突出缺点是不适应用户需求的变化。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>增量模型</p>
+<ul>
+<li>优点<ul>
+<li>将待开发的软件系统模块化，可以分批次地提交软件产品，使用户可以及时了解软件项目的进展。</li>
+<li>以组件为单位进行开发降低了软件开发的风险。一个开发周期内的错误不会影响到整个软件系统。</li>
+<li>开发顺序灵活。开发人员可以对组件的实现顺序进行优先级排序，先完成需求稳定的核心组件。当组件的优先级发生变化时，还能及时地对实现顺序进行调整。</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>要求待开发的软件系统可以被模块化。如果待开发的软件系统很难被模块化，那么将会给增量开发带来很多麻烦。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>螺旋模型</p>
+<ul>
+<li>优点<ul>
+<li>通过原型的创建，使软件开发在每个迭代的最初明确方向；</li>
+<li>通过风险分析，最大程度地降低软件彻底失败造成损失的可能性；</li>
+<li>在每个迭代阶段植入软件测试，使每个阶段的质量得到保证；</li>
+<li>整体过程具备很高的灵活性，在开发过程的任何阶段自由应对变化；</li>
+<li>每个迭代阶段累计开发成本，使支出状况容易掌握；</li>
+<li>通过对用户反馈的采集，与用户沟通，以保证用户需求的最大实现；</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>过分依赖风险分析经验与技术，一旦在风险分析过程中出现偏差将造成重大损失；</li>
+<li>过于灵活的开发过程不利于已经签署合同的客户与开发者之间的协调；</li>
+<li>由于只适用大型软件，过大的风险管理支出会影响客户的最终收益；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="简述-UP-的三大特点，其中哪些内容体现了用户驱动的开发，哪些内容体现风险驱动的开发？"><a href="#简述-UP-的三大特点，其中哪些内容体现了用户驱动的开发，哪些内容体现风险驱动的开发？" class="headerlink" title="简述 UP 的三大特点，其中哪些内容体现了用户驱动的开发，哪些内容体现风险驱动的开发？"></a>简述 UP 的三大特点，其中哪些内容体现了用户驱动的开发，哪些内容体现风险驱动的开发？</h2><p>三大特点：</p>
+<ul>
+<li>迭代的且增量的<ul>
+<li>UP是一个迭代、增量开发过程。细化、构建、移交阶段被分解为有时限的迭代。每个迭代最终导致增量，即一个 较前一发布有增加/改进的功能的发布。</li>
+</ul>
+</li>
+<li>架构中心的<ul>
+<li>UP坚持认为架构是项目组形成系统的核心。由于没有任何一个模型足以覆盖系统的所有方面，因此UP支持多种模型与观点(?)。</li>
+</ul>
+</li>
+<li>风险关注的<ul>
+<li>UP要求项目组在项目初期就致力于定位最关键的风险。每次迭代的交付，尤其是细化阶段，必须精心选择以保证最大的风险已被定位。</li>
+</ul>
+</li>
+</ul>
+<p>迭代且增量体现了用户驱动的开发，因为每次迭代都可以给用户看到成品并得到用户的反馈；在项目初期定位风险体现了风险驱动的开发。</p>
+<h2 id="UP-四个阶段的划分准则是什么？关键的里程碑是什么？"><a href="#UP-四个阶段的划分准则是什么？关键的里程碑是什么？" class="headerlink" title="UP 四个阶段的划分准则是什么？关键的里程碑是什么？"></a>UP 四个阶段的划分准则是什么？关键的里程碑是什么？</h2><p>划分准则可以用每个阶段的结束来表示：</p>
+<ul>
+<li>构思阶段：开发一个系统大致版本、构思业务例子、定义范围、粗略估计开发费用和计划</li>
+<li>细化阶段：完成一个构建阶段的准确可靠的计划，并定位重要的风险因子</li>
+<li>构建阶段：完成一个待(在移交阶段)部署的软件</li>
+<li>移交阶段：部署给目标用户</li>
+</ul>
+<p>关键的里程碑是 <strong>构思阶段的结束</strong>。</p>
+<h2 id="IT-项目管理中，“工期、质量、范围-内容”-三个元素中，在合同固定条件下，为什么说“范围-内容”是项目团队是易于控制的"><a href="#IT-项目管理中，“工期、质量、范围-内容”-三个元素中，在合同固定条件下，为什么说“范围-内容”是项目团队是易于控制的" class="headerlink" title="IT 项目管理中，“工期、质量、范围/内容” 三个元素中，在合同固定条件下，为什么说“范围/内容”是项目团队是易于控制的"></a>IT 项目管理中，“工期、质量、范围/内容” 三个元素中，在合同固定条件下，为什么说“范围/内容”是项目团队是易于控制的</h2><p>由于一般会在合同中限制截止日期，因此工期对于项目来说是确定的，不能由项目团队控制。</p>
+<p>质量是指满足明确或隐含需求的程度。在合同中应该对需求会有一个明确的标准，而交付物也必须达到这一标准，才能真正交付。</p>
+<p>范围是指为了实现项目目标必须完成的工作，即只要可以“实现项目目标”/“达到交付物标准”，具体如何工作一般不会由合同甲方限制，因此这是项目团队易于控制的</p>
+<h2 id="为什么说，UP-为企业按固定节奏生产、固定周期发布软件产品提供了依据？"><a href="#为什么说，UP-为企业按固定节奏生产、固定周期发布软件产品提供了依据？" class="headerlink" title="为什么说，UP 为企业按固定节奏生产、固定周期发布软件产品提供了依据？"></a>为什么说，UP 为企业按固定节奏生产、固定周期发布软件产品提供了依据？</h2><p>UP将阶段划分为4个阶段：构想阶段、细化阶段、构造阶段、移交阶段，通过阶段划分，可以使企业能有一个固定的节奏来生产；UP的迭代性，使得项目组能周期性地产出交付物，因此固定周期地发布软件产品也是UP的指导</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/14/2018-03-14-homework-sad-1/" rel="next" title="系统分析与设计 第一次作业">
+                <i class="fa fa-chevron-left"></i> 系统分析与设计 第一次作业
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/26/2018-03-26-c++-final-class/" rel="prev" title="C++实现final类(不可被继承的类)">
+                C++实现final类(不可被继承的类) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DaddyTrap/PlusC</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。"><span class="nav-number">1.</span> <span class="nav-text">简述瀑布模型、增量模型、螺旋模型（含原型方法）的优缺点。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简述-UP-的三大特点，其中哪些内容体现了用户驱动的开发，哪些内容体现风险驱动的开发？"><span class="nav-number">2.</span> <span class="nav-text">简述 UP 的三大特点，其中哪些内容体现了用户驱动的开发，哪些内容体现风险驱动的开发？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UP-四个阶段的划分准则是什么？关键的里程碑是什么？"><span class="nav-number">3.</span> <span class="nav-text">UP 四个阶段的划分准则是什么？关键的里程碑是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IT-项目管理中，“工期、质量、范围-内容”-三个元素中，在合同固定条件下，为什么说“范围-内容”是项目团队是易于控制的"><span class="nav-number">4.</span> <span class="nav-text">IT 项目管理中，“工期、质量、范围/内容” 三个元素中，在合同固定条件下，为什么说“范围/内容”是项目团队是易于控制的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么说，UP-为企业按固定节奏生产、固定周期发布软件产品提供了依据？"><span class="nav-number">5.</span> <span class="nav-text">为什么说，UP 为企业按固定节奏生产、固定周期发布软件产品提供了依据？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DaddyTrap/PlusC</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

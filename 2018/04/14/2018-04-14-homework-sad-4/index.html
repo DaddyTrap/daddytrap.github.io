@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="用例建模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="系统分析与设计 第四次作业(lesson6)">
+<meta property="og:url" content="http://yoursite.com/2018/04/14/2018-04-14-homework-sad-4/index.html">
+<meta property="og:site_name" content="DaddyTrap&#39;s blog">
+<meta property="og:description" content="用例建模">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/assets/sad-4/reserve-hotel.png">
+<meta property="og:image" content="http://yoursite.com/assets/sad-4/ctrip-hotel.png">
+<meta property="og:image" content="http://yoursite.com/assets/sad-4/ctrip-hotel-activity.png">
+<meta property="og:image" content="http://yoursite.com/assets/sad-4/atm.png">
+<meta property="og:image" content="http://yoursite.com/assets/sad-4/taobao.png">
+<meta property="og:updated_time" content="2018-09-30T13:21:16.797Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="系统分析与设计 第四次作业(lesson6)">
+<meta name="twitter:description" content="用例建模">
+<meta name="twitter:image" content="http://yoursite.com/assets/sad-4/reserve-hotel.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/14/2018-04-14-homework-sad-4/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>系统分析与设计 第四次作业(lesson6) | DaddyTrap's blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DaddyTrap's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/14/2018-04-14-homework-sad-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DaddyTrap/PlusC">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DaddyTrap's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">系统分析与设计 第四次作业(lesson6)
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-04-14 10:36:55" itemprop="dateCreated datePublished" datetime="2018-04-14T10:36:55+08:00">2018-04-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-30 21:21:16" itemprop="dateModified" datetime="2018-09-30T21:21:16+08:00">2018-09-30</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/SAD-Homework/" itemprop="url" rel="index"><span itemprop="name">SAD Homework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="用例建模"><a href="#用例建模" class="headerlink" title="用例建模"></a>用例建模</h2><a id="more"></a>
+<h3 id="a-阅读-Asg-RH-文档，绘制用例图。-按-Task1-要求，请使用工具-UMLet，截图格式务必是-png-并控制尺寸"><a href="#a-阅读-Asg-RH-文档，绘制用例图。-按-Task1-要求，请使用工具-UMLet，截图格式务必是-png-并控制尺寸" class="headerlink" title="a. 阅读 Asg_RH 文档，绘制用例图。 按 Task1 要求，请使用工具 UMLet，截图格式务必是 png 并控制尺寸"></a>a. 阅读 Asg_RH 文档，绘制用例图。 按 Task1 要求，请使用工具 UMLet，截图格式务必是 png 并控制尺寸</h3><p><img src="/assets/sad-4/reserve-hotel.png" alt=""></p>
+<h3 id="b-选择你熟悉的定旅馆在线服务系统（或移动-APP），如绘制用例图。"><a href="#b-选择你熟悉的定旅馆在线服务系统（或移动-APP），如绘制用例图。" class="headerlink" title="b. 选择你熟悉的定旅馆在线服务系统（或移动 APP），如绘制用例图。"></a>b. 选择你熟悉的定旅馆在线服务系统（或移动 APP），如绘制用例图。</h3><p>选择 <strong>携程</strong> 的酒店模块作为例子</p>
+<p><img src="/assets/sad-4/ctrip-hotel.png" alt=""></p>
+<p>蓝色部分是创新用例、天蓝色部分是外部系统</p>
+<h3 id="c-对比两个时代、不同地区产品的用例图，总结在项目早期，发现创新的思路与方法"><a href="#c-对比两个时代、不同地区产品的用例图，总结在项目早期，发现创新的思路与方法" class="headerlink" title="c. 对比两个时代、不同地区产品的用例图，总结在项目早期，发现创新的思路与方法"></a>c. 对比两个时代、不同地区产品的用例图，总结在项目早期，发现创新的思路与方法</h3><p>比起较老的系统，新的系统加入了 <strong>酒店点评</strong> 的模块，这是因为当代人们更愿意使用网络分享自己的想法，也就更愿意分享自己的住店体验</p>
+<p>比起外国的系统，携程还有 <strong>酒店周边美食</strong> 的模块，这是因为中国讲 “民以食为天” ，当然这也是因为现今的定位技术更加成熟，可以很简单地实现这样的功能</p>
+<p>从上面可以看出，在项目早期，可以通过对目标用户的调研、对流行技术的调研来发现创新的思路与方法</p>
+<h3 id="d-请使用-SCRUM-方法，在（任务b）用例图基础上，编制某定旅馆开发的需求-（backlog）"><a href="#d-请使用-SCRUM-方法，在（任务b）用例图基础上，编制某定旅馆开发的需求-（backlog）" class="headerlink" title="d. 请使用 SCRUM 方法，在（任务b）用例图基础上，编制某定旅馆开发的需求 （backlog）"></a>d. 请使用 SCRUM 方法，在（任务b）用例图基础上，编制某定旅馆开发的需求 （backlog）</h3><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Imp</th>
+<th>Est</th>
+<th>How to demo</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>查询酒店</td>
+<td>100</td>
+<td>3</td>
+<td>打开app，选择目的地、入住/离店时间、价格/星际、出行类型(出差/休闲)、填写搜索关键字(位置/品牌/酒店名)</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>显示查询结果</td>
+<td>100</td>
+<td>2</td>
+<td>查询后，看到查询结果列表</td>
+<td>查询结果列表项应能简洁明了地显示价格、星级、评价等信息</td>
+</tr>
+<tr>
+<td>3</td>
+<td>筛选查询结果</td>
+<td>50</td>
+<td>2</td>
+<td>查询后，对查询结果再次根据酒店类型/品牌/标签等进行筛选</td>
+<td>筛选条件非常多，此处需要细致考虑数据库如何建表的问题</td>
+</tr>
+<tr>
+<td>4</td>
+<td>排序查询结果</td>
+<td>70</td>
+<td>1.5</td>
+<td>查询后，对查询结果再次根据好评/智能/价格/距离等要素进行排序</td>
+<td>同3</td>
+</tr>
+<tr>
+<td>5</td>
+<td>查看酒店详情</td>
+<td>120</td>
+<td>2.5</td>
+<td>点击查询结果列表项后，进入酒店详情页面，可以看到酒店的详细介绍</td>
+<td>包括酒店介绍、房间类型/价格、酒店点评、酒店周边美食</td>
+</tr>
+<tr>
+<td>6</td>
+<td>预订房间</td>
+<td>130</td>
+<td>1</td>
+<td>在酒店详情页面，选择要预订的房间后进入预订房间的页面，在此填写所需房间数、入住人信息、联系方式、预计到店时间等</td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>支付</td>
+<td>120</td>
+<td>6</td>
+<td>预订房间后，可以确认订单并进入支付页面，在支付页面选择使用支付宝/微信支付/携程绑定银行卡等方式支付</td>
+<td>与第三方支付手段对接的过程可能需要耗费相当的时间，开发自身的绑定银行卡系统也是比较耗时的</td>
+</tr>
+<tr>
+<td>8</td>
+<td>点评酒店</td>
+<td>60</td>
+<td>3</td>
+<td>离店后，可以对上一次的预订进行评价，即对酒店进行点评</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>搜索周边美食</td>
+<td>60</td>
+<td>4</td>
+<td>在酒店详情页面，可以看到酒店周边的餐饮</td>
+<td>后端需要提供通过酒店位置获取周边餐饮的接口</td>
+</tr>
+</tbody>
+</table>
+<h2 id="业务建模"><a href="#业务建模" class="headerlink" title="业务建模"></a>业务建模</h2><h3 id="在（任务b）基础上，用活动图建模找酒店用例。简述利用流程图发现子用例的方法。"><a href="#在（任务b）基础上，用活动图建模找酒店用例。简述利用流程图发现子用例的方法。" class="headerlink" title="在（任务b）基础上，用活动图建模找酒店用例。简述利用流程图发现子用例的方法。"></a>在（任务b）基础上，用活动图建模找酒店用例。简述利用流程图发现子用例的方法。</h3><p><img src="/assets/sad-4/ctrip-hotel-activity.png" alt=""></p>
+<p>画活动图时，对整个使用流程有更清晰的思路而不像画用例图是思路较散，因此更容易发现子用例</p>
+<h3 id="选择你身边的银行-ATM，用活动图描绘取款业务流程"><a href="#选择你身边的银行-ATM，用活动图描绘取款业务流程" class="headerlink" title="选择你身边的银行 ATM，用活动图描绘取款业务流程"></a>选择你身边的银行 ATM，用活动图描绘取款业务流程</h3><p><img src="/assets/sad-4/atm.png" alt=""></p>
+<h3 id="查找淘宝退货业务官方文档，使用多泳道图，表达客户、淘宝网、淘宝商家服务系统、商家等用户和系统协同完成退货业务的过程。分析客户要完成退货业务，在淘宝网上需要实现哪些系统用例"><a href="#查找淘宝退货业务官方文档，使用多泳道图，表达客户、淘宝网、淘宝商家服务系统、商家等用户和系统协同完成退货业务的过程。分析客户要完成退货业务，在淘宝网上需要实现哪些系统用例" class="headerlink" title="查找淘宝退货业务官方文档，使用多泳道图，表达客户、淘宝网、淘宝商家服务系统、商家等用户和系统协同完成退货业务的过程。分析客户要完成退货业务，在淘宝网上需要实现哪些系统用例"></a>查找淘宝退货业务官方文档，使用多泳道图，表达客户、淘宝网、淘宝商家服务系统、商家等用户和系统协同完成退货业务的过程。分析客户要完成退货业务，在淘宝网上需要实现哪些系统用例</h3><p>参考文档： <a href="https://world.taobao.com/helper/knowledge.htm?spm=a312a.7762693.2015080302.6.QYdOln&amp;kid=20052036" target="_blank" rel="noopener">https://world.taobao.com/helper/knowledge.htm?spm=a312a.7762693.2015080302.6.QYdOln&amp;kid=20052036</a></p>
+<p><img src="/assets/sad-4/taobao.png" alt=""></p>
+<h2 id="用例文本编写"><a href="#用例文本编写" class="headerlink" title="用例文本编写"></a>用例文本编写</h2><h3 id="在大作业基础上，分析三种用例文本的优点和缺点"><a href="#在大作业基础上，分析三种用例文本的优点和缺点" class="headerlink" title="在大作业基础上，分析三种用例文本的优点和缺点"></a>在大作业基础上，分析三种用例文本的优点和缺点</h3><p>下面说一下三种用例文本的优点</p>
+<ul>
+<li>用例图<ul>
+<li>能清晰看出有哪些用例</li>
+<li>能清晰看出用例与使用者的关系</li>
+</ul>
+</li>
+<li>需求文档 (backlog)<ul>
+<li>能清晰看到所有需求，便于项目分工和工作优先级安排</li>
+</ul>
+</li>
+<li>活动图<ul>
+<li>能 <strong>有顺序</strong> 地逐个描述过程，清晰地看出用例的使用过程</li>
+</ul>
+</li>
+</ul>
+<p>其实三者的缺点都写在了另外二者的优点中，如用例图和活动图都很难用于项目分配工作；而backlog则很难对用例有一个整体的把握……</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/10/2018-04-10-travis-ci-tutorial/" rel="next" title="为 GitHub 项目配置持续集成 (CI)">
+                <i class="fa fa-chevron-left"></i> 为 GitHub 项目配置持续集成 (CI)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/29/2018-04-29-homework-sad-5/" rel="prev" title="系统分析与设计 第五次作业(lesson7)">
+                系统分析与设计 第五次作业(lesson7) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">DaddyTrap/PlusC</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用例建模"><span class="nav-number">1.</span> <span class="nav-text">用例建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#a-阅读-Asg-RH-文档，绘制用例图。-按-Task1-要求，请使用工具-UMLet，截图格式务必是-png-并控制尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">a. 阅读 Asg_RH 文档，绘制用例图。 按 Task1 要求，请使用工具 UMLet，截图格式务必是 png 并控制尺寸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#b-选择你熟悉的定旅馆在线服务系统（或移动-APP），如绘制用例图。"><span class="nav-number">1.2.</span> <span class="nav-text">b. 选择你熟悉的定旅馆在线服务系统（或移动 APP），如绘制用例图。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#c-对比两个时代、不同地区产品的用例图，总结在项目早期，发现创新的思路与方法"><span class="nav-number">1.3.</span> <span class="nav-text">c. 对比两个时代、不同地区产品的用例图，总结在项目早期，发现创新的思路与方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#d-请使用-SCRUM-方法，在（任务b）用例图基础上，编制某定旅馆开发的需求-（backlog）"><span class="nav-number">1.4.</span> <span class="nav-text">d. 请使用 SCRUM 方法，在（任务b）用例图基础上，编制某定旅馆开发的需求 （backlog）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务建模"><span class="nav-number">2.</span> <span class="nav-text">业务建模</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在（任务b）基础上，用活动图建模找酒店用例。简述利用流程图发现子用例的方法。"><span class="nav-number">2.1.</span> <span class="nav-text">在（任务b）基础上，用活动图建模找酒店用例。简述利用流程图发现子用例的方法。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择你身边的银行-ATM，用活动图描绘取款业务流程"><span class="nav-number">2.2.</span> <span class="nav-text">选择你身边的银行 ATM，用活动图描绘取款业务流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查找淘宝退货业务官方文档，使用多泳道图，表达客户、淘宝网、淘宝商家服务系统、商家等用户和系统协同完成退货业务的过程。分析客户要完成退货业务，在淘宝网上需要实现哪些系统用例"><span class="nav-number">2.3.</span> <span class="nav-text">查找淘宝退货业务官方文档，使用多泳道图，表达客户、淘宝网、淘宝商家服务系统、商家等用户和系统协同完成退货业务的过程。分析客户要完成退货业务，在淘宝网上需要实现哪些系统用例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用例文本编写"><span class="nav-number">3.</span> <span class="nav-text">用例文本编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在大作业基础上，分析三种用例文本的优点和缺点"><span class="nav-number">3.1.</span> <span class="nav-text">在大作业基础上，分析三种用例文本的优点和缺点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DaddyTrap/PlusC</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
