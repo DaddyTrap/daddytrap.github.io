@@ -1,0 +1,335 @@
+{
+	"textures": [
+		{
+			"image": "ryu.png",
+			"format": "RGBA8888",
+			"size": {
+				"w": 122,
+				"h": 728
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "hp1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 73,
+						"h": 91
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 73,
+						"h": 91
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 73,
+						"h": 91
+					}
+				},
+				{
+					"filename": "shoryu4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 49,
+						"h": 117
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 49,
+						"h": 117
+					},
+					"frame": {
+						"x": 73,
+						"y": 0,
+						"w": 49,
+						"h": 117
+					}
+				},
+				{
+					"filename": "shoryu1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 68,
+						"h": 89
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 68,
+						"h": 89
+					},
+					"frame": {
+						"x": 0,
+						"y": 91,
+						"w": 68,
+						"h": 89
+					}
+				},
+				{
+					"filename": "shoryu3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 53,
+						"h": 119
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 53,
+						"h": 119
+					},
+					"frame": {
+						"x": 68,
+						"y": 117,
+						"w": 53,
+						"h": 119
+					}
+				},
+				{
+					"filename": "shoryu0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 62,
+						"h": 87
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 62,
+						"h": 87
+					},
+					"frame": {
+						"x": 0,
+						"y": 180,
+						"w": 62,
+						"h": 87
+					}
+				},
+				{
+					"filename": "idle1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 60,
+						"h": 89
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 60,
+						"h": 89
+					},
+					"frame": {
+						"x": 62,
+						"y": 236,
+						"w": 60,
+						"h": 89
+					}
+				},
+				{
+					"filename": "crounch.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 61,
+						"h": 61
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 61,
+						"h": 61
+					},
+					"frame": {
+						"x": 0,
+						"y": 267,
+						"w": 61,
+						"h": 61
+					}
+				},
+				{
+					"filename": "hp0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 60,
+						"h": 72
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 60,
+						"h": 72
+					},
+					"frame": {
+						"x": 61,
+						"y": 325,
+						"w": 60,
+						"h": 72
+					}
+				},
+				{
+					"filename": "shoryu2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 59,
+						"h": 125
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 125
+					},
+					"frame": {
+						"x": 0,
+						"y": 328,
+						"w": 59,
+						"h": 125
+					}
+				},
+				{
+					"filename": "shoryu5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 59,
+						"h": 105
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 105
+					},
+					"frame": {
+						"x": 59,
+						"y": 397,
+						"w": 59,
+						"h": 105
+					}
+				},
+				{
+					"filename": "idle0.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 59,
+						"h": 90
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 90
+					},
+					"frame": {
+						"x": 0,
+						"y": 453,
+						"w": 59,
+						"h": 90
+					}
+				},
+				{
+					"filename": "idle2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 59,
+						"h": 90
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 59,
+						"h": 90
+					},
+					"frame": {
+						"x": 59,
+						"y": 502,
+						"w": 59,
+						"h": 90
+					}
+				},
+				{
+					"filename": "idle4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 58,
+						"h": 92
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 58,
+						"h": 92
+					},
+					"frame": {
+						"x": 0,
+						"y": 543,
+						"w": 58,
+						"h": 92
+					}
+				},
+				{
+					"filename": "hp2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 57,
+						"h": 126
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 57,
+						"h": 126
+					},
+					"frame": {
+						"x": 58,
+						"y": 592,
+						"w": 57,
+						"h": 126
+					}
+				},
+				{
+					"filename": "idle3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 55,
+						"h": 93
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 55,
+						"h": 93
+					},
+					"frame": {
+						"x": 0,
+						"y": 635,
+						"w": 55,
+						"h": 93
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:a245b717d778673a96fd524db3ca9ef5:610e3bf13f4b675e0eb8b54cdbe29cf9:bc3f79fd5054d91d5af798abf49b1d4f$"
+	}
+}
