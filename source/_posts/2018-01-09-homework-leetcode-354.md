@@ -1,7 +1,6 @@
 ---
 layout: post
 title: 作业_19 leetcode 354 Russian Doll Envelopes
-subtitle:
 author: DaddyTrap
 date: 2018-01-09 22:59:10 +0800
 categories: Algorithm Homework
